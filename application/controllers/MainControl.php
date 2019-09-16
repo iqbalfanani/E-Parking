@@ -5,7 +5,7 @@ class MainControl extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('layouts/login_view');
+		$this->load->view('layouts/template');
 	}
 
 }
