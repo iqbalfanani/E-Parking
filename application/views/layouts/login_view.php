@@ -65,9 +65,9 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn">
+						<a href="<?php echo base_url() ?>Dashboard" class="login100-form-btn">
 							Login
-						</button>
+						</a>
 					</div>
 
 				</form>

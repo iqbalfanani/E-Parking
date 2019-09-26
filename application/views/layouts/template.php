@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>E-Parking | Politeknik Negeri Malang</title>
+  <title><?php echo $title ?> E-Parking | Politeknik Negeri Malang</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,11 +35,11 @@
       <?php $this->load->view('layouts/top_bar.php'); ?>
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        
 
-          <?php $this->load->view('contents/dashboard'); ?>
+          <?php $this->load->view($contents); ?>
           
-        </div>
+        
         <!-- /.container-fluid -->
 
       </div>
@@ -98,9 +98,14 @@
   <!-- Page level plugins -->
   <script src="<?php echo base_url() ?>assets/vendor/chart.js/Chart.min.js"></script>
 
+  <script src="<?php echo base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
   <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
+
+  <script src="<?php echo base_url() ?>assets/js/demo/datatables-demo.js"></script>
 
 </body>
 
