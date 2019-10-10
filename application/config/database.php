@@ -76,18 +76,11 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
+	'username' => 'root',
 	'password' => '',
-<<<<<<< HEAD
 	'database' => '',
-=======
 	'database' => 'e-parking',
->>>>>>> parent of 6361724... Revert "Merge branch 'master' of https://github.com/iqbalfanani/E-Parking"
 	'dbdriver' => 'mysqli',
-=======
-	'database' => 'e-parking',
-	'dbdriver' => 'mysql',
->>>>>>> parent of 247182f... Merge branch 'master' of https://github.com/iqbalfanani/E-Parking
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
