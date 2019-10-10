@@ -23,7 +23,6 @@
       <hr class="sidebar-divider">
 
       <!-- Heading -->
-      <?php if ($this->session->userdata('level')==='1'):?>
       <div class="sidebar-heading">
         CONFIGURATION
       </div>
@@ -39,13 +38,14 @@
             <h6 class="collapse-header">Configuration</h6>
             <a class="collapse-item" href="<?php echo base_url()?>Configuration/Mahasiswa">Mahasiswa Card</a>
             <a class="collapse-item" href="<?php echo base_url() ?>Configuration/User">User</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>Configuration/Role">Role</a>
           </div>
         </div>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-<?php endif?>
+
       <!-- Heading -->
       <div class="sidebar-heading">
         GENERAL
