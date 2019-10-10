@@ -6,106 +6,80 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
-              <a href="#" class="btn btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Tambah User Baru</span>
-                  </a>
+              <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#insertModal">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Tambah User Baru</span>
+              </a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Nama</th>
-                      <th>Alamat</th>
-                      <th>No Telepon</th>
-                      <th>Email</th>
-                      <th>Role</th>                    
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Nama</th>
-                      <th>Alamat</th>
-                      <th>No Telepon</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Action</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>Jl. System Architect</td>
-                      <td>081231231</td>
-                      <td>Tiger@gmail.com</td>
-                      <td>Admin</td>
-                      <td><a href="#" class="btn btn-info btn-circle btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                      </a>
-                      <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </a></td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Jl. Accountant</td>
-                      <td>08992321</td>
-                      <td>Garrett@gmail.com</td>
-                      <td>User</td>
-                      <td><a href="#" class="btn btn-info btn-circle btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                      </a>
-                      <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </a></td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Jl. Junior Technical Author</td>
-                      <td>082323223</td>
-                      <td>Ashton@gmail.com</td>
-                      <td>User</td>
-                      <td><a href="#" class="btn btn-info btn-circle btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                      </a>
-                      <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </a></td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Jl. Senior Javascript Developer</td>
-                      <td>0893232423</td>
-                      <td>Cedric</td>
-                      <td>User</td>
-                      <td><a href="#" class="btn btn-info btn-circle btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                      </a>
-                      <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </a></td>
-                    </tr>
-                    <tr>
-                      <td>Airi Satou</td>
-                      <td>Jl. Accountant</td>
-                      <td>0894354343</td>
-                      <td>Airi@gmail.com</td>
-                      <td>Admin</td>
-                      <td><a href="#" class="btn btn-info btn-circle btn-sm">
-                        <i class="fas fa-info-circle"></i>
-                      </a>
-                      <a href="#" class="btn btn-danger btn-circle btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </a></td>
-                    </tr>
-                  </tbody>
+                <table class="table table-bordered" id="table-data-user"data-url="<?php echo base_url('Configuration/get_list_user') ?>">               
                 </table>
               </div>
             </div>
           </div>
 
         </div>
+
+<!--Modal Mahasiswa-->
+        <div class="modal fade" id="insertModal" aria-hidden="true" aria-labelledby="insertModal" role="dialog" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <form class="modal-content user" id="insertDataForm">
+              <div class="modal-header">
+                <h4 class="modal-title">Add New User</h4>
+                <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                  <div class="col-md-12">
+                    <label><b>Username</b></label>
+                    <input type="text" class="form-control form-control-user" id="username" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>Password</b></label>
+                    <input type="password" class="form-control form-control-user" id="password" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>Nama</b></label>
+                    <input type="text" class="form-control form-control-user" id="nama" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>No Telp</b></label>
+                    <input type="number" class="form-control form-control-user" id="no_telp" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>Email</b></label>
+                    <input type="text" class="form-control form-control-user" id="email" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>Alamat</b></label>
+                    <input type="text" class="form-control form-control-user" id="alamat" placeholder="Type here..." required>
+                  </div>
+                  <br>
+                  <div class="col-md-12">
+                    <label><b>Level</b></label>
+                    <br>
+                    <select name="" class="form-control-user">
+                      <option value="1">Admin</option>
+                      <option value="2">User</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="form-actions">
+                  <button class="btn btn-primary" type="submit">Submit</button>
+                  <a class="btn btn-sm btn-white" data-dismiss="modal" href="javascript:void(0)">Cancel</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        

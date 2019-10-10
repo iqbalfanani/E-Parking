@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign In</title>
+    <title>Sign In | E-Parking</title>
     <link href="<?php echo base_url('assets/login/css/bootstrap.min.css');?>" rel="stylesheet">
   </head>
   <body>
