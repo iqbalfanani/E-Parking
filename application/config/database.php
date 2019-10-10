@@ -78,8 +78,13 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => '',
 	'password' => '',
+<<<<<<< HEAD
 	'database' => '',
 	'dbdriver' => 'mysqli',
+=======
+	'database' => 'e-parking',
+	'dbdriver' => 'mysql',
+>>>>>>> parent of 247182f... Merge branch 'master' of https://github.com/iqbalfanani/E-Parking
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
