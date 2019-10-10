@@ -80,6 +80,9 @@ $db['default'] = array(
 	'password' => '',
 <<<<<<< HEAD
 	'database' => '',
+=======
+	'database' => 'e-parking',
+>>>>>>> parent of 6361724... Revert "Merge branch 'master' of https://github.com/iqbalfanani/E-Parking"
 	'dbdriver' => 'mysqli',
 =======
 	'database' => 'e-parking',
