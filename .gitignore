@@ -5,9 +5,10 @@ application/cache/*
 
 application/logs/*
 !application/logs/index.html
+application/config/database.php
 
 !application/*/.htaccess
-
+.htaccess
 composer.lock
 
 user_guide_src/build/*
