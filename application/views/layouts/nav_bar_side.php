@@ -64,7 +64,7 @@
             <a class="collapse-item" href="<?php echo base_url() ?>General/Laporan_Data">Laporan</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Main View</h6>
-            <a class="collapse-item" href="404.html">Go To Main View</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>General/Main_View">Go To Main View</a>
           </div>
         </div>
       </li>

@@ -36,6 +36,11 @@ class General extends CI_Controller {
 		$this->load->view('layouts/template', $data);	
 	}
 
+	public function Main_View()
+	{
+		$this->load->view('belajar');
+	}
+
 }
 
 /* End of file General.php */
