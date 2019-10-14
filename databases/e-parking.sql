@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Okt 2019 pada 05.05
+-- Generation Time: 14 Okt 2019 pada 06.16
 -- Versi Server: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -30,10 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `log_parkir` (
   `id` int(11) NOT NULL,
-  `fk_card` int(11) NOT NULL,
-  `fk_mahasiswa` int(11) NOT NULL,
-  `fk_user` int(11) NOT NULL,
-  `parkir_masuk` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `card_number` varchar(11) NOT NULL,
+  `nim` varchar(11) NOT NULL,
+  `nama_mahasiswa` varchar(20) NOT NULL,
+  `date_log` date NOT NULL,
+  `parkir_masuk` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `parkir_keluar` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -48,7 +49,8 @@ CREATE TABLE `mahasiswa` (
   `nim` varchar(15) NOT NULL,
   `nama_mhs` varchar(55) NOT NULL,
   `jurusan` varchar(55) NOT NULL,
-  `id_card` varchar(11) NOT NULL
+  `id_card` varchar(11) NOT NULL,
+  `id_card_select` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -65,7 +67,7 @@ CREATE TABLE `user` (
   `alamat` varchar(55) NOT NULL,
   `telp` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `level` varchar(3) NOT NULL
+  `level` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
