@@ -12,12 +12,15 @@
   <script src="<?php echo base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <script src="<?php echo base_url() ?>assets/vendor/bootstrap-sweetalert/sweetalert.js"></script>
+
   <script>
    $(document).ready(function(){
-    var table_url = $('#table-data-user').data('url');
+
+    //================ DATATABLE USER ====================//
+    var table_url_user = $('#table-data-user').data('url');
     $('#table-data-user').DataTable({
       "ajax":{
-        'url' : table_url,
+        'url' : table_url_user,
       },
       "columns":[{
         "title" : "#",
@@ -80,15 +83,11 @@
       }]
     });
 
-  });
-</script>
-
-<script>
-   $(document).ready(function(){
-    var table_url = $('#table-data-mhs').data('url');
+    //================ DATATABLE MAHASISWA ====================//
+    var table_url_mhs = $('#table-data-mhs').data('url');
     $('#table-data-mhs').DataTable({
       "ajax":{
-        'url' : table_url,
+        'url' : table_url_mhs,
       },
       "columns":[{
         "title" : "#",
@@ -133,5 +132,98 @@
   });
 </script>
 
-  <!-- Page level custom scripts -->
+<!--================ INSERT MAHASISWA ====================-->
+<script>
+  $(document).ready(function(){
+    //Insert
+    $('#insertDataForm').on('submit',function(){
+      var username = $('#username').val();
+      var password = $('#password').val();
+      var nama = $('#nama').val();
+      var alamat = $('#alamat').val();
+      var telp = $('#telp').val();
+      var email = $('#email').val();
+
+      $.ajax({
+        type: "post",
+        url:"<?php echo base_url('Configuration/User/user_insert') ?>",
+        beforeSend:function(){
+          swal({
+            title:'Waiting',
+            html:'Processing Data',
+            onOpen: ()=>{
+              swal.showLoading()
+            }
+          })
+        },
+        data: {username:username, password:password,nama:nama,alamat:alamat, telp:telp,email:email},
+        dataType: "JSON",
+        success: function(data){
+          $('#table-data-user').DataTable().ajax.reload(null,false);
+          swal({
+            type: 'success',
+            title:'Data Added',
+            text:'Succesfully added item',
+          })
+          $('#insertModal').modal('hide');
+          $('#username').val('');
+          $('#password').val('');
+          $('#nama').val('');
+          $('#alamat').val('');
+          $('#telp').val('');
+          $('#email').val('');
+        }
+      })
+      return false;
+    });
+
+    //Delete
+    $('#table-data-user').on('click','.delete-class', function(){
+      var id = $(this).data('id');
+      swal({
+        title: 'Confirmation',
+        text: "Do you want to delete? ",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            url:"<?php echo base_url('Configuration/User/user_delete')?>",  
+            method:"post",
+            beforeSend :function () {
+            swal({
+                title: 'Waiting',
+                html: 'Processing Data',
+                onOpen: () => {
+                  swal.showLoading()
+                }
+              })      
+            },    
+            data:{id:id},
+            success:function(data){
+              swal(
+                'Delete',
+                'Success Delete',
+                'success'
+              )
+              $('#table-data-user').DataTable().ajax.reload(null, false)
+            }
+          })
+      } else if (result.dismiss === swal.DismissReason.cancel) {
+          swal(
+            'Cancel',
+            'You Canceled Delete',
+            'error'
+          )
+        }
+      })
+    });
+
+});
+</script>
   

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Configuration extends CI_Controller {
+class Mahasiswa extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -10,16 +10,17 @@ class Configuration extends CI_Controller {
 		if ($this->session->userdata('logged_in')!==TRUE) {
 			redirect('Login');
 		}
-
 	}
 
-	public function Mahasiswa()
+	var $cname = "Configuration/Mahasiswa";
+
+	public function mahasiswa_index()
 	{
 		if ($this->session->userdata('level')==='1') {
 			$data = [
 				'title' =>"Mahasiswa Card",
 				'headers'=>'config/headers',
-				'contents' => "contents/configuration_v/mahasiswa_view",
+				'contents' => "contents/configuration_v/mahasiswa/mahasiswa_view",
 				'footers' => 'config/footers',
 				'data' => array()
 			];
@@ -35,29 +36,7 @@ class Configuration extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function User()
-	{
-		if ($this->session->userdata('level')==='1') {
-			$data =[
-				'title' =>"User",
-				'headers'=>'config/headers',
-				'contents'=> "contents/configuration_v/user_view",
-				'footers' => 'config/footers',
-				'data'=>array()
-			];
-
-			$this->load->view('layouts/template', $data);
-		}else{
-			echo "Access Denied";
-		}
-	}
-
-	public function get_list_user(){
-		$data['data'] = $this->User_model->get_data_user();
-		echo json_encode($data);
-	}
-
 }
 
-/* End of file Configuration.php */
-/* Location: ./application/controllers/Configuration.php */
+/* End of file Mahasiswa.php */
+/* Location: ./application/controllers/Configuration/Mahasiswa.php */
