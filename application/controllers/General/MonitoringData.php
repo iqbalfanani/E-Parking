@@ -5,6 +5,7 @@ class MonitoringData extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+		$this->load->model('Monitoringdata_model');
 		if ($this->session->userdata('logged_in')!==TRUE) {
 			redirect('Login');
 		}
@@ -23,6 +24,11 @@ class MonitoringData extends CI_Controller {
 		];
 
 		$this->load->view('layouts/template', $data);
+	}
+
+	public function get_list_log_parkir(){
+		$data['data'] = $this->Monitoringdata_model->get_data_log_parkir();
+		echo json_encode($data);
 	}
 	
 
