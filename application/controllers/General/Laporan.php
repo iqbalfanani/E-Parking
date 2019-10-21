@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Laporan extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this->load->model('Laporan_model');
 		if ($this->session->userdata('logged_in')!==TRUE) {
 			redirect('Login');
 		}
@@ -22,6 +23,11 @@ class Laporan extends CI_Controller {
 		];
 
 		$this->load->view('layouts/template', $data);	
+	}
+
+	public function get_list_laporan(){
+		$data['data'] = $this->Laporan_model->get_data_laporan();
+		echo json_encode($data);
 	}
 
 
