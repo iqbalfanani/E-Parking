@@ -132,7 +132,7 @@
   });
 </script>
 
-<!--================ INSERT MAHASISWA ====================-->
+<!--================ INSERT USER ====================-->
 <script>
   $(document).ready(function(){
     //Insert
@@ -177,7 +177,7 @@
       return false;
     });
 
-    //Delete
+  //======================== DELETE USER===============
     $('#table-data-user').on('click','.delete-class', function(){
       var id = $(this).data('id');
       swal({
@@ -224,6 +224,7 @@
       })
     });
 
+  
 });
 </script>
   
