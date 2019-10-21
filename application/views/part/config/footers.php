@@ -129,9 +129,103 @@
       }]
     });
 
+
+    //================ DATATABLE MONITORING ====================//
+    var table_url_monitoring = $('#table-data-monitoring').data('url');
+    $('#table-data-monitoring').DataTable({
+      "ajax":{
+        'url' : table_url_monitoring,
+      },
+      "columns":[{
+        "title" : "#",
+        "width": "5%",
+        "data": null,
+        "visible": true,
+        "class": "text-center",
+        render:(data,type,row, meta)=>{
+          return meta.row + meta.settings._iDisplayStart+1;
+        }
+      },{
+        "title" : "Card ID",
+        "width" : "200px",
+        "data" : "card_number"
+      },
+      {
+        "title" : "NIM",
+        "width" : "200px",
+        "data" : "nim"
+      },{
+        "title" : "Nama Mahasiswa",
+        "width" : "200px",
+        "data" : "nama_mahasiswa"
+      },{
+        "title" : "Date",
+        "width" : "200px",
+        "data" : "date_log"
+      },{
+        "title" : "Parkir Masuk",
+        "width" : "200px",
+        "data" : "parkir_masuk"
+      },{
+        "title" : "Parkir Keluar",
+        "width" : "200px",
+        "data" : "parkir_keluar"
+      }]
+    });
+
+    //================ DATATABLE LAPORAN ====================//
+    var table_url_laporan = $('#table-data-laporan').data('url');
+    $('#table-data-laporan').DataTable({
+      "ajax":{
+        'url' : table_url_laporan,
+      },
+      "columns":[{
+        "title" : "#",
+        "width": "5%",
+        "data": null,
+        "visible": true,
+        "class": "text-center",
+        render:(data,type,row, meta)=>{
+          return meta.row + meta.settings._iDisplayStart+1;
+        }
+      },{
+        "title" : "Card ID",
+        "width" : "200px",
+        "data" : "card_number"
+      },
+      {
+        "title" : "NIM",
+        "width" : "200px",
+        "data" : "nim"
+      },{
+        "title" : "Nama Mahasiswa",
+        "width" : "200px",
+        "data" : "nama_mahasiswa"
+      },{
+        "title" : "Date",
+        "width" : "200px",
+        "data" : "date_log"
+      },{
+        "title" : "Parkir Masuk",
+        "width" : "200px",
+        "data" : "parkir_masuk"
+      },{
+        "title" : "Parkir Keluar",
+        "width" : "200px",
+        "data" : "parkir_keluar"
+      }]
+    });
+
   });
 </script>
 
+
+
+
+<!--//////////////////////////////////////////////////////
+  CRUD AJAX
+  ////////////////////////////////////////////////////////
+-->
 <!--================ INSERT USER ====================-->
 <script>
   $(document).ready(function(){
@@ -224,7 +318,67 @@
       })
     });
 
-  
+  //===============UPDATE USER==========================
+  $('#table-data-user').on('click','.update-class', function () {
+  // ambil element id pada saat klik ubah
+  var id =  $(this).data('id');
+          
+     $.ajax({
+      type: "post",
+      url: "<?php echo base_url('Configuration/user/form_update_user')?>",
+      beforeSend :function () {
+        swal({
+          title: 'Processing',
+          html: 'Processing data',
+          onOpen: () => {
+            swal.showLoading()
+          }
+        })      
+      },
+      data: {id:id},
+      success: function (data) {
+        swal.close();
+        $('#updateModal').modal('show');
+        $('#formUpdate').html(data);
+        
+        // proses untuk mengubah data
+        $('#formUpdate').on('submit', function () {
+            var edit_username = $('#edit_username').val(); // diambil dari id nama yang ada diform modal
+            var edit_password = $('#edit_password').val(); // diambil dari id alamat yanag ada di form modal 
+            var edit_nama = $('#edit_nama').val(); //diambil dari id yang ada di form modal
+            var edit_telp = $('#edit_telp').val();
+            var edit_email = $('#edit_email').val();
+            var edit_alamat = $('#edit_alamat').val();
+            $.ajax({
+              type: "POST",
+              url: "<?php echo base_url('Configuration/User/user_update')?>",
+              beforeSend :function () {
+                swal({
+                  title: 'Waiting',
+                  html: 'Processing data',
+                  onOpen: () => {
+                    swal.showLoading()
+                  }
+                })      
+              },
+              data: {edit_username:edit_username, edit_password:edit_password, edit_nama:edit_nama, edit_telp:edit_telp, edit_email:edit_email, edit_alamat:edit_alamat,id:id}, // ambil datanya dari form yang ada di variabel
+              
+              success: function (data) {
+                $('#table-data-user').DataTable().ajax.reload(null,false);
+                swal({
+                  type: 'success',
+                  title: 'Data Updated',
+                  text: 'Succesfully updated data'
+                })
+                  // bersihkan form pada modal
+                  $('#updateModal').modal('hide');
+                }
+            })
+          return false;
+        });
+      }
+    });
+  });
+
 });
 </script>
-  
