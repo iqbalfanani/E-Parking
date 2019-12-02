@@ -27,9 +27,10 @@ class User extends CI_Controller {
 			];
 
 			$this->load->view('layouts/template', $data);
+
 			
 		}else{
-			echo "Access Denied";
+			$this->load->view('layouts/403');
 		}
 	}
 
@@ -46,7 +47,7 @@ class User extends CI_Controller {
 			'alamat'=>$this->input->post('alamat'),
 			'telp'=>$this->input->post('telp'),
 			'email'=>$this->input->post('email'),
-			'level'=>$this->input->post('level'),
+			'level'=>$this->input->post('level')
 		];
 
 		$data=$this->User_model->insert_user($set_pc);
@@ -58,6 +59,29 @@ class User extends CI_Controller {
 		$id = $this->input->post('id');
 
 		$data = $this->User_model->delete_user($id);
+		echo json_encode($data);
+	}
+
+	public function form_update_user()
+	{
+		$id = $this->input->post('id');
+		$data['data_by'] = $this->User_model->get_data_by_id($id);		
+		$this->load->view('contents/configuration_v/user/formupdate', $data);
+	}
+
+	public function user_update()
+	{
+		$objdata = array(
+			'username' => $this->input->post('edit_username'),
+			'nama' => $this->input->post('edit_nama'),
+			'telp' => $this->input->post('edit_telp'),
+			'email' => $this->input->post('edit_email'),
+			'alamat' => $this->input->post('edit_alamat')
+		);
+
+		$id = $this->input->post('id');
+		$data = $this->User_model->update_user($objdata, $id);
+
 		echo json_encode($data);
 	}
 
