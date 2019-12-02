@@ -14,6 +14,33 @@ class Mahasiswa_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function get_data_card(){
+		$this->db->select('*');
+		$this->db->from($this->dbtable);
+		
+
+	}
+
+	public function get_data_by($id){
+		$this->db->select('*');
+		$this->db->from($this->dbtable);
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+	public function update_mhs($data,$id)
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('mahasiswa', $data);
+	}
+
+	public function delete_mhs($id)
+	{
+		$this->db->where('id', $id);
+		return $this->db->delete('mahasiswa');
+	}
+
 }
 
 /* End of file Mahasiswa_model.php */
