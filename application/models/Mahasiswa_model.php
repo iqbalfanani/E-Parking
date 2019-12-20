@@ -5,6 +5,29 @@ class Mahasiswa_model extends CI_Model {
 
 	var $dbtable = "mahasiswa";
 
+	public function saveRfid($data){
+
+		return $this->db->insert('mahasiswa',$data);
+	}
+
+	public function cek_mahasiswa_card($data){
+		$this->db->select('*');
+		$this->db->from($this->dbtable);
+		$this->db->where('id_card', $data);
+		$query= $this->db->get()->row();
+		if (!empty($query)) {
+			
+		}
+		// return $query->row();
+	}
+
+	public function cek_mahasiswa_in_out($data){
+		
+
+	}
+
+
+
 	public function get_data_mhs()
 	{
 		$this->db->select('*');
@@ -17,8 +40,6 @@ class Mahasiswa_model extends CI_Model {
 	public function get_data_card(){
 		$this->db->select('*');
 		$this->db->from($this->dbtable);
-		
-
 	}
 
 	public function get_data_by($id){

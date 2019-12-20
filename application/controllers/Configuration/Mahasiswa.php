@@ -7,9 +7,10 @@ class Mahasiswa extends CI_Controller {
 		parent::__construct();
 		$this->load->model('User_model');
 		$this->load->model('Mahasiswa_model');
-		if ($this->session->userdata('logged_in')!==TRUE) {
-			redirect('Login');
-		}
+		$this->load->model('Monitoringdata_model');
+		// if ($this->session->userdata('logged_in')!==TRUE) {
+		// 	redirect('Login');
+		// }
 	}
 
 	var $cname = "Configuration/Mahasiswa";
@@ -38,15 +39,18 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function postdemo(){
-		if(isset($_GET['CardID'])) {
-			echo "eko";
-
-
-
+		if(!empty($_GET['CardID'])) {
+			$rfid = $this->input->get('CardID');
+			$cek = $this->Mahasiswa_model->cek_mahasiswa_card($rfid);
+			$dataRfid = array('id_card' => $rfid);
+			if($this->Mahasiswa_model->saveRfid($dataRfid)){
+				echo "succesful1";
+			}else{
+				echo "ERROR";
+			}
 		}
 		else{
-			echo "Empty Card ID";
-			exit();
+			echo "Empty Card ID";			
 		}
 	}
 
