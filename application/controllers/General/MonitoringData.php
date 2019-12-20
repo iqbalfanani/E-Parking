@@ -18,7 +18,7 @@ class MonitoringData extends CI_Controller {
 		$data=[
 			'title' =>"Monitoring Data",
 			'headers'=>'config/headers',
-			'contents'=>"contents/general_v/monitoringdata_view",
+			'contents'=>'contents/general_v/monitoringdata_view',
 			'footers' => 'config/footers',
 			'data' =>array()
 		];
@@ -26,9 +26,24 @@ class MonitoringData extends CI_Controller {
 		$this->load->view('layouts/template', $data);
 	}
 
+	public function main_view(){
+		$data=[
+			'title'=>"Monitoring",
+			'headers'=>'config/headers',
+			'contents'=>'contents/main_view',
+			'footers' => 'config/footers',
+			'data' =>array()
+		];
+		$this->load->view('layouts/maintemplate',$data);
+	}
+
 	public function get_list_log_parkir(){
 		$data['data'] = $this->Monitoringdata_model->get_data_log_parkir();
 		echo json_encode($data);
+	}
+
+	public function log_parkir(){
+		$this->load->view('log_parkir');
 	}
 	
 
