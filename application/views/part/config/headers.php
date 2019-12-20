@@ -11,5 +11,6 @@
 
   <!-- Custom styles for this page -->
   <link href="<?php echo base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"></script>
 
   <link href="<?php echo base_url() ?>assets/vendor/bootstrap-sweetalert/sweetalert.css">
