@@ -32,23 +32,12 @@
 	<!-- <font color="white"><font size="8"><marquee><h2>E-Parking Polinema</h2></marquee></font></font> -->
 	<!-- <div style="text-align:right;"><font face="Courier New"><font color="white"><font size="8"><?php echo date('d-M-Y'); ?></font></font></font></div> -->
 
-	<div class="card" style="width:18rem;">
-		<div class="card-header">
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="table-data-monitoring"data-url="<?php echo base_url('General/MonitoringData/get_list_log_parkir') ?>">               
+			</table>
+		</div>
 	</div>
-</tr>
-</thead>
-</div>
 </body>
-
-<script>
-	$(document).ready(function(){
-		setInterval(function(){
-			$.ajax({
-				url: "parsingdata.php"
-			}).done(function(data) {
-				$('#cards').html(data);
-			});
-		},3000);
-	});
-</script>
+</div>
 </html>
