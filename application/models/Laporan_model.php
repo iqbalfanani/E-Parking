@@ -14,6 +14,14 @@ class Laporan_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function get_data_filter($date1, $date2){
+		$query = "SELECT * FROM `log_parkir` WHERE date_log >= '".$date1."' AND date_log <= '".$date2."'";
+		$query = $this->db->query($query);
+		$result = $query->result();
+		$data['data'] = $result;
+		return $data;
+	}
+
 }
 
 /* End of file Laporan_model.php */

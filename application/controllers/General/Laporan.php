@@ -30,6 +30,17 @@ class Laporan extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function filter(){
+		$date1 = date('Y-m-d', strtotime($this->input->post('date1')));
+		$date2 = date('Y-m-d', strtotime($this->input->post('date2')));
+		$data = $this->Laporan_model->get_data_filter($date1,$date2);
+		echo json_encode($data);
+	}
+
+	public function report(){
+
+	}
+
 
 }
 
