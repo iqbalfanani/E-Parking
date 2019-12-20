@@ -23,8 +23,24 @@ class User_model extends CI_Model {
 	#delete
 	public function delete_user($id)
 	{
-		$this->db->where('user_id', $id);
+		$this->db->where('id', $id);
 		return $this->db->delete('user');
+	}
+
+	public function get_data_by_id($id)
+	{
+		$this->db->select('*');
+		$this->db->from($this->dbtable);
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row_array();
+
+	}
+
+	public function update_user($data,$id)
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('user', $data);
 	}
 
 	
