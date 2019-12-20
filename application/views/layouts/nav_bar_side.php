@@ -37,7 +37,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Configuration</h6>
-            <a class="collapse-item" href="<?php echo base_url()?>Configuration/Mahasiswa/mahasiswa_index">Mahasiswa Card</a>
+            <a class="collapse-item" href="<?php echo base_url()?>Configuration/Mahasiswa">Mahasiswa Card</a>
             <a class="collapse-item" href="<?php echo base_url() ?>Configuration/User/user_index">User</a>
           </div>
         </div>
@@ -64,7 +64,7 @@
             <a class="collapse-item" href="<?php echo base_url() ?>General/Laporan/laporan_data">Laporan</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Main View</h6>
-            <a class="collapse-item" href="<?php echo base_url() ?>General/MainView/main_view">Go To Main View</a>
+            <a class="collapse-item" href="<?php echo base_url() ?>General/MonitoringData/main_view">Go To Main View</a>
           </div>
         </div>
       </li>
